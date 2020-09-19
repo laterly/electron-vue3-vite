@@ -2,8 +2,13 @@
   "name": "electron-vue3-vite",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "cross-env NODE_ENV=development concurrently -n=vite,main -c=green,blue \"npm run dev:vite\" \"npm run dev:main\"",
+    "build": "cross-env NODE_ENV=production npm run build:vite && npm run build:main",
+    "builder": "cross-env NODE_ENV=production npm run build:vite && npm run build:main && electron-builder",
+    "dev:main": "cross-env NODE_ENV=development node build/dev.js",
+    "build:main": "cross-env NODE_ENV=production node build/build.js",
+    "dev:vite": "cross-env NODE_ENV=development vite",
+    "build:vite": "cross-env NODE_ENV=production vite build"
   },
   "main": "dist/main.js",
   "dependencies": {
@@ -14,7 +19,25 @@
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-loader": "^8.1.0",
+    "chalk": "^4.1.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1",
+    "electron-devtools-installer": "^3.1.1",
+    "happypack": "^5.0.1",
+    "node-loader": "^1.0.1",
+    "ora": "^5.1.0",
+    "portfinder": "^1.0.28",
+    "rimraf": "^3.0.2",
     "vite": "^1.0.0-rc.4",
-    "@vue/compiler-sfc": "^3.0.0"
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }
