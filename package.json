@@ -1,0 +1,20 @@
+{
+  "name": "electron-vue3-vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "main": "dist/main.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "vite": "^1.0.0-rc.4",
+    "@vue/compiler-sfc": "^3.0.0"
+  }
+}
