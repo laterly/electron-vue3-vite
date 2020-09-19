@@ -60,10 +60,10 @@ const startElectron=()=> {
   electronProcess = spawn(electron, args)
  
   electronProcess.stdout.on('data', data => {
-    console.log(chalk.blue(data.toString()));
+    // console.log(chalk.blue(data.toString()));
   })
   electronProcess.stderr.on('data', data => {
-    console.log(chalk.blue(data.toString()));
+    // console.log(chalk.blue(data.toString()));
   })
 
   electronProcess.on('close', () => {

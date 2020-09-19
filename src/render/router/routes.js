@@ -1,10 +1,15 @@
 import Home from '../views/Home.vue';
-// 别名必须以 / 开头、结尾
+import Load from '../views/Load.vue';
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home,
+  },
+  {
+    path: '/load',
+    name: 'Load',
+    component: Load,
   },
   {
     path: '/list/:type',
