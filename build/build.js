@@ -35,7 +35,7 @@ const startMain=()=> {
         }
         resolve();
         console.log(chalk.cyan(`Build complete production in ${stats.endTime-stats.startTime}ms.\n`));
-        console.log('process.env.IS_BUILDER',process.env.IS_BUILDER);
+        
         if(process.env.IS_BUILDER === 'builder') process.exit()
       })
     });
