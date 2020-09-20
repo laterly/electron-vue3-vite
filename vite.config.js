@@ -5,6 +5,7 @@ const outDir = resolve(__dirname, 'dist/electron')
 export default {
   port:8090,
   root,
+  base: './',
   outDir,
   alias: {
     // 别名必须以 / 开头、结尾

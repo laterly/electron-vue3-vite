@@ -45,7 +45,7 @@ const startMain=()=> {
           }, 5000)
         }
         resolve();
-        console.log(chalk.cyan('Build complete development.\n'));
+        console.log(chalk.cyan(`Build complete development in ${stats.endTime-stats.startTime}ms.\n`));
       })
     });
   })

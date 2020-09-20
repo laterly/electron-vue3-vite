@@ -2,9 +2,9 @@
   "name": "electron-vue3-vite",
   "version": "0.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development concurrently -n=vite,main -c=green,blue \"npm run dev:vite\" \"npm run dev:main\"",
-    "build": "cross-env NODE_ENV=production npm run build:vite && npm run build:main",
-    "builder": "cross-env NODE_ENV=production npm run build:vite && npm run build:main && electron-builder",
+    "dev": "concurrently -n=vite,main -c=green,blue \"npm run dev:vite\" \"npm run dev:main\"",
+    "build": "npm run build:vite && npm run build:main",
+    "builder": "npm run build:vite && cross-env-shell IS_BUILDER=builder npm run build:main && electron-builder",
     "dev:main": "cross-env NODE_ENV=development node build/dev.js",
     "build:main": "cross-env NODE_ENV=production node build/build.js",
     "dev:vite": "cross-env NODE_ENV=development vite",

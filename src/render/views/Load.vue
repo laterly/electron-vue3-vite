@@ -36,18 +36,9 @@ body {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-mos-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	text-align:center;
 /* disable selection and cursor changes */
-	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     cursor:default;
 }
@@ -56,10 +47,6 @@ body {
 	border-bottom:5px solid #f2f2f2;
 	overflow:hidden;
 	width:100%;
-	-webkit-animation: line 2s ease-in-out infinite;
-	-moz-animation: line 2s ease-in-out infinite;
-	-mos-animation: line 2s ease-in-out infinite;
-	-o-animation: line 2s ease-in-out infinite;
 	animation: line 2s ease-in-out infinite;
 	color:#f2f2f2;
 	font-size:4em;
@@ -93,50 +80,9 @@ body {
 }
 
 
-@-webkit-keyframes line{
-	0% {width:0%;}
-	50%,100% {width:100%;}
-}
-
-@-moz-keyframes line{
-	0% {width:0%;}
-	50%,100% {width:100%;}
-}
-
-@-mos-keyframes line{
-	0% {width:0%;}
-	50%,100% {width:100%;}
-}
-
-@-o-keyframes line{
-	0% {width:0%;}
-	50%,100% {width:100%;}
-}
-
 @keyframes line{
 	0% {width:0%;}
 	50%,100% {width:100%;}
-}
-
-
-@-webkit-keyframes cap{
-	0%,50% {width:0%;}
-	100% {width:100%;}
-}
-
-@-moz-keyframes cap{
-	0%,50% {width:0%;}
-	100% {width:100%;}
-}
-
-@-mos-keyframes cap{
-	0%,50% {width:0%;}
-	100% {width:100%;}
-}
-
-@-o-keyframes cap{
-	0%,50% {width:0%;}
-	100% {width:100%;}
 }
 
 @keyframes cap{

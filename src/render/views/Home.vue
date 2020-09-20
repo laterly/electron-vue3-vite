@@ -7,32 +7,36 @@
   </div>
 </template>-->
 <template>
-<div class="home-page">
-  <div class="logo-box">
-    <img style="height:200px;" src="/@/assets/icons/electron.png" alt="Electron logo">
-    <img alt="Vue logo" src="/@/assets/logo.png" />
+  <div class="home-page">
+    <div class="logo-box">
+      <img
+        style="height: 200px"
+        src="/@/assets/icons/electron.png"
+        alt="Electron logo"
+      />
+      <img alt="Vue logo" src="/@/assets/logo.png" />
+    </div>
+    <HelloWorld msg="Hello Electron 10.0 + Vue 3.0 + Vite" />
   </div>
-  <HelloWorld msg="Hello Electron 9.0 + Vue 3.0 + Vite" />
-</div>
 </template>
 
 <script>
-import HelloWorld from '/@/components/HelloWorld.vue'
-import { computed,reactive,toRefs } from "vue";
+import HelloWorld from "/@/components/HelloWorld.vue";
+import { computed, reactive, toRefs } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    HelloWorld,
   },
   setup() {
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
-    const state=reactive(store.state);
+    const state = reactive(store.state);
     const show = () => {
-      console.log('store',store.state);
+      console.log("store", store.state);
       store.commit("toggleShow");
     };
     const toPage = () => {
@@ -40,25 +44,26 @@ export default {
       router.push({
         name: "List",
         params: {
-          type: "movie"
-        }
+          type: "movie",
+        },
       });
     };
     return {
       ...toRefs(state),
       show,
-      toPage
+      toPage,
     };
-  }
+  },
 };
 </script>
 <style>
-html,body{
+html,
+body {
   margin: 0;
   padding: 0;
-   width: 100%;
+  width: 100%;
   height: 100%;
-  background-color: #2F3241;
+  background-color: #2f3241;
 }
 .logo-box {
   width: 100%;
@@ -66,9 +71,9 @@ html,body{
   width: 100%;
   justify-content: center;
 }
-.home-page{
+.home-page {
   width: 100%;
   height: 100%;
-  background-color: #2F3241;
+  background-color: #2f3241;
 }
 </style>

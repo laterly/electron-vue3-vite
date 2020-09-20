@@ -1,10 +1,10 @@
 
 
-const { resolve } = require('path')
+const { join } = require('path')
 let { app, BrowserWindow } = require('electron')
-
+const env = process.env.NODE_ENV === 'development'
 let win = null
-let loadWin =null
+let loadWin = null
 function createWin() {
   // 创建浏览器窗口
   win = new BrowserWindow({
@@ -15,9 +15,11 @@ function createWin() {
     },
   })
 
-  const URL = process.env.NODE_ENV === 'development'
+  const URL = env
     ? `http://localhost:8090` // vite 启动的服务器地址
-    : `file://${resolve(__dirname, './dist/electron/index.html')}` // vite 构建后的静态文件地址
+    : `file://${join(__dirname, '../../dist/electron/index.html')}` // vite 构建后的静态文件地址
+
+  console.log('URL', URL);
 
   win.loadURL(URL)
 
@@ -26,14 +28,14 @@ function createWin() {
   })
   loadWin.destroy()
 
-  // if (process.env.NODE_ENV === 'development') win.webContents.openDevTools(true)
+  // if (env) win.webContents.openDevTools()
 
   win.on('closed', () => {
     win = null
   })
 }
 
-function createLoadWin () {
+function createLoadWin() {
   loadWin = new BrowserWindow({
     width: 1094,
     height: 791,
@@ -43,22 +45,22 @@ function createLoadWin () {
     resizable: false,
     webPreferences: { experimentalFeatures: true }
   })
-  const loadURL = process.env.NODE_ENV === 'development' ? `http://localhost:8090/#load` : `file://${resolve(__dirname, './dist/electron/static/load/index.html')}`
-  
+  const loadURL = `file://${join(__dirname, '../../dist/electron/static/load/index.html')}` 
+
   loadWin.loadURL(loadURL)
 
   loadWin.show()
 
   setTimeout(() => {
     createWin()
-  }, 5000)
+  }, 3500)
 
   loadWin.on('closed', () => {
     loadWin = null
   })
 }
 
-app.isReady() ? createLoadWin() : app.on('ready', ()=>{
+app.isReady() ? createLoadWin() : app.on('ready', () => {
   createLoadWin()
 })
 

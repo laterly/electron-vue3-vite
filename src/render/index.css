@@ -4,5 +4,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #ccc;
-  margin-top: 60px;
+  padding-top: 60px;
+  box-sizing: border-box;
 }
