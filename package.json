@@ -2,7 +2,7 @@
   "name": "electron-vue3-vite",
   "version": "0.0.0",
   "scripts": {
-    "dev": "concurrently -n=vite,main -c=green,blue \"npm run dev:vite\" \"npm run dev:main\"",
+    "dev": "concurrently -n=vite,main -c=green,blue \"npm run dev:vite\" \"wait-on http://localhost:8090 && npm run dev:main\"",
     "build": "npm run build:vite && npm run build:main",
     "builder": "npm run build:vite && cross-env-shell IS_BUILDER=builder npm run build:main && electron-builder",
     "dev:main": "cross-env NODE_ENV=development node build/dev.js",
@@ -32,13 +32,16 @@
     "electron": "^10.1.2",
     "electron-builder": "^22.8.1",
     "electron-devtools-installer": "^3.1.1",
+    "electron-log": "^4.2.4",
     "happypack": "^5.0.1",
     "node-loader": "^1.0.1",
     "ora": "^5.1.0",
     "portfinder": "^1.0.28",
     "rimraf": "^3.0.2",
     "vite": "^1.0.0-rc.4",
+    "wait-on": "^5.2.0",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
