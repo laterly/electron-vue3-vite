@@ -2,19 +2,26 @@
 
 ![Electron + Vue3 + Vite  ](screenshot.png)
 
+## Quick Start
 
-## Installation
+```sh
+# clone the project
+git clone https://github.com/laterly/electron-vue3-vite.git
 
-`npm install`
+# enter the project directory
+cd electron-vue3-vite
 
-## Development
+# install dependency
+npm install
 
-`npm run dev`
+# develop
+npm run dev
 
-## Build
+#build
 
-`npm run build`
+npm run build
 
-## Builder 
+#builder
 
-`npm run builder`
+npm run builder
+```
