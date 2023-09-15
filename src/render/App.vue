@@ -4,12 +4,5 @@
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'App',
-  components: {
-    
-  }
-}
+<script lang="ts" setup>
 </script>

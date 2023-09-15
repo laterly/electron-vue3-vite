@@ -4,11 +4,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'List',
-  components: {
-    
-  },
-};
+<script lang="ts" setup>
+
 </script>

@@ -1,10 +1,8 @@
-const { join } = require("path");
-let { app, BrowserWindow } = require("electron");
+import path from "path";
+import { app, BrowserWindow } from "electron";
 const env = process.env.NODE_ENV === "development";
-process.env.DIST_ELECTRON = join(__dirname, '../..')
-process.env.DIST = join(process.env.DIST_ELECTRON, '../dist/electron')
-let win = null;
-let loadWin = null;
+let win: any = null;
+let loadWin: any = null;
 function createWin() {
   // 创建浏览器窗口
   win = new BrowserWindow({
@@ -14,26 +12,17 @@ function createWin() {
       nodeIntegration: true,
     },
   });
-  const url = "http://127.0.0.1:8090";
-  const indexHtml = join(process.env.DIST, "index.html");
-
-  // win.loadURL(URL)
 
   if (env) {
-    // electron-vite-vue#298
-    win.loadURL(url);
-    // Open devTool if the app is not packaged
-    win.webContents.openDevTools();
+    win.loadURL(`http://localhost:8090`);
   } else {
-    win.loadFile(indexHtml);
+    win.loadFile(path.join("dist", "index.html"));
   }
 
   win.webContents.once("dom-ready", () => {
-    win.show();
+    win?.show();
   });
   loadWin.destroy();
-
-  // if (env) win.webContents.openDevTools()
 
   win.on("closed", () => {
     win = null;
@@ -50,12 +39,8 @@ function createLoadWin() {
     resizable: false,
     webPreferences: { experimentalFeatures: true },
   });
-  const loadURL = `file://${join(
-    __dirname,
-    "../../dist/electron/static/load/index.html"
-  )}`;
 
-  loadWin.loadURL(loadURL);
+  loadWin.loadFile(path.join("dist", "static/load/index.html"));
 
   loadWin.show();
 

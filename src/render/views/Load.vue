@@ -5,13 +5,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Load',
-  components: {
-    
-  },
-};
+<script lang="ts" setup>
+
 </script>
 <style scoped>
 

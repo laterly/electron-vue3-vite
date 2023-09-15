@@ -1,64 +1,48 @@
-const os = require("os");
-const { resolve } = require('path')
-const HappyPack = require("happypack");
-const HappyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const env = process.env.NODE_ENV === 'development'
+const { resolve } = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 module.exports = {
-    entry: {
-        main: resolve(__dirname, "../src/main/main.js"),
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: "happypack/loader?id=MainHappyBabel"
-            },
-            {
-                test: /\.node$/,
-                exclude: /node_modules/,
-                use: "node-loader"
-            },
-        ],
-    },
-    output: {
-        filename: "[name].js",
-        libraryTarget: 'commonjs2',
-        path: resolve(__dirname, "../dist"),
-    },
-    plugins: [
-        new HappyPack({
-            id: "MainHappyBabel",
-            loaders: [
-                {
-                    loader: "babel-loader",
-                    options: {
-                        cacheDirectory: true,
-                        presets: ['@babel/preset-env'],
-                        plugins: ['@babel/plugin-transform-runtime']
-                    },
-                },
-            ],
-            threadPool: HappyThreadPool,
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: resolve(__dirname, "../static"),
-                    to: resolve(__dirname, "../dist/electron/static")
-                }
-            ]
-        })
+  entry: {
+    main: resolve(__dirname, "../src/main/main.ts"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|tsx|ts)$/,
+        exclude: /node_modules/,
+        use: "esbuild-loader",
+      },
+      
+      {
+        test: /\.node$/,
+        exclude: /node_modules/,
+        use: "node-loader",
+      },
     ],
-    resolve: {
-        extensions: [".tsx", ".ts", ".js", ".json", ".node"],
-    },
-    watch: true,
-    watchOptions: {
-        poll: 1000, // 每秒询问多少次
-        aggregateTimeout: 500,  //防抖 多少毫秒后再次触发
-        ignored: /node_modules/ //忽略时时监听
-    },
-    target: 'electron-main'
+  },
+  output: {
+    filename: "[name].js",
+    libraryTarget: "commonjs2",
+    path: resolve(__dirname, "../dist"),
+  },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: resolve(__dirname, "../static"),
+          to: resolve(__dirname, "../dist/static"),
+        },
+      ],
+    }),
+  ],
+  resolve: {
+    extensions: [".tsx", ".ts", ".js", ".json", ".node"],
+  },
+  watch: true,
+  watchOptions: {
+    poll: 1000, // 每秒询问多少次
+    aggregateTimeout: 500, //防抖 多少毫秒后再次触发
+    ignored: /node_modules/, //忽略时时监听
+  },
+  target: "electron-main",
 };

@@ -1,11 +1,3 @@
-<!--<template>
-  <div class="home">
-    <p v-show="isShowBack">首页</p>
-     <p v-show="$store.state.isShowBack">首页</p>
-    <button @click="show">展示隐藏</button>
-    <button @click="toPage">跳转路由</button>
-  </div>
-</template>-->
 <template>
   <div class="home-page">
     <div class="logo-box">
@@ -16,45 +8,13 @@
       />
       <img alt="Vue logo" src="@/assets/logo.png" />
     </div>
-    <HelloWorld msg="Hello Electron 10.0 + Vue 3.0 + Vite" />
+    <HelloWorld msg="Hello Electron + Vue 3.0 + Vite" />
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import HelloWorld from "@/components/HelloWorld.vue";
-import { computed, reactive, toRefs } from "vue";
-import { useRouter, useRoute } from "vue-router";
-import { useStore } from "vuex";
-export default {
-  name: "Home",
-  components: {
-    HelloWorld,
-  },
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const store = useStore();
-    const state = reactive(store.state);
-    const show = () => {
-      console.log("store", store.state);
-      store.commit("toggleShow");
-    };
-    const toPage = () => {
-      console.log("route", route);
-      router.push({
-        name: "List",
-        params: {
-          type: "movie",
-        },
-      });
-    };
-    return {
-      ...toRefs(state),
-      show,
-      toPage,
-    };
-  },
-};
+
 </script>
 <style>
 html,

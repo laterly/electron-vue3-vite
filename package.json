@@ -1,8 +1,8 @@
 {
   "name": "electron-vue3-vite",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "scripts": {
-    "dev": "concurrently -n=vite,main -c=green,blue \"npm run dev:vite\" \"wait-on http://127.0.0.1:8090 && npm run dev:main\"",
+    "dev": "node build/start.js",
     "build": "npm run build:vite && npm run build:main",
     "builder": "npm run build:vite && cross-env-shell IS_BUILDER=builder npm run build:main && electron-builder --config=./build/builder.json -w=nsis --x64",
     "dev:main": "cross-env NODE_ENV=development node build/dev.js",
@@ -23,6 +23,7 @@
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
+    "@types/node": "^20.6.1",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vue/compiler-sfc": "^3.3.4",
     "babel-loader": "^8.1.0",
@@ -34,15 +35,15 @@
     "electron-builder": "^24.6.4",
     "electron-devtools-installer": "^3.1.1",
     "electron-log": "^4.2.4",
-    "happypack": "^5.0.1",
+    "esbuild-loader": "^4.0.2",
     "node-loader": "^1.0.1",
     "ora": "^5.1.0",
     "portfinder": "^1.0.28",
     "rimraf": "^3.0.2",
     "vite": "^4.4.9",
-    "wait-on": "^5.2.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "wait-on": "^7.0.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
