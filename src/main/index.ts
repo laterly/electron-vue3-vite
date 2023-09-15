@@ -9,6 +9,7 @@ function createWin() {
     width: 1094,
     height: 791,
     webPreferences: {
+      preload: path.resolve(__dirname, "preload.js"),
       nodeIntegration: true,
     },
   });
@@ -16,7 +17,7 @@ function createWin() {
   if (env) {
     win.loadURL(`http://localhost:8090`);
   } else {
-    win.loadFile(path.join("dist", "index.html"));
+    win.loadFile(path.resolve(__dirname, "index.html"));
   }
 
   win.webContents.once("dom-ready", () => {
@@ -40,7 +41,7 @@ function createLoadWin() {
     webPreferences: { experimentalFeatures: true },
   });
 
-  loadWin.loadFile(path.join("dist", "static/load/index.html"));
+  loadWin.loadFile(path.resolve(__dirname, "static/load/index.html"));
 
   loadWin.show();
 

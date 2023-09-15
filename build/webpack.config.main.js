@@ -3,7 +3,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: resolve(__dirname, "../src/main/main.ts"),
+    main: resolve(__dirname, "../src/main/index.ts"),
+    preload: resolve(__dirname,"../src/main/preload/index.ts")
   },
   module: {
     rules: [
