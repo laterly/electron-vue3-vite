@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/list/:type',
     name: 'List',
-    component: import('/@/views/List.vue'),
+    component: import('@/views/List.vue'),
   },
 ];
  export default routes;

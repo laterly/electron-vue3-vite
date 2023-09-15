@@ -11,17 +11,17 @@
     <div class="logo-box">
       <img
         style="height: 200px"
-        src="/@/assets/icons/electron.png"
+        src="@/assets/icons/electron.png"
         alt="Electron logo"
       />
-      <img alt="Vue logo" src="/@/assets/logo.png" />
+      <img alt="Vue logo" src="@/assets/logo.png" />
     </div>
     <HelloWorld msg="Hello Electron 10.0 + Vue 3.0 + Vite" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "/@/components/HelloWorld.vue";
+import HelloWorld from "@/components/HelloWorld.vue";
 import { computed, reactive, toRefs } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useStore } from "vuex";

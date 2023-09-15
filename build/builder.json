@@ -1,0 +1,53 @@
+{
+    "productName": "laterly electron",
+    "appId": "com.electron.laterly",
+    "copyright": "© 2023 laterly Technology Co., Ltd.",
+    "directories": {
+      "output": "out"
+    },
+    "asar": true,
+    "files": [
+      "**/*",
+      "!src/",
+      "!out/",
+      "!static/"
+    ],
+    "extraResources": {
+      "from": "./extraResources",
+      "to": "extraResources"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./icons/icon.ico",
+      "uninstallerIcon": "./icons/icon.ico",
+      "installerHeaderIcon": "./icons/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "electron-vue3-vite框架"
+    },
+    "mac": {
+      "icon": "./icons/icon.icns",
+      "artifactName": "${productName}-${os}-${version}-${arch}.${ext}",
+      "darkModeSupport": true,
+      "hardenedRuntime": false
+    },
+    "win": {
+      "icon": "./icons/icon.ico",
+      "artifactName": "${productName}-${os}-${version}-${arch}.${ext}",
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ]
+    },
+    "linux": {
+      "icon": "./icons/icon.icns",
+      "artifactName": "${productName}-${os}-${version}-${arch}.${ext}",
+      "target": [
+        "deb"
+      ],
+      "category": "Utility"
+    }
+  }
