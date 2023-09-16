@@ -1,15 +1,17 @@
 <template>
   <h1>{{ msg }}</h1>
-  <button @click="count++">count is: {{ count }}</button>
+  <button @click="()=>setCount(count+1)">count is: {{ count }}</button>
   <p>
     Edit <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 
-defineProps<{ msg: string }>()
+import { useAppStore } from "../store";
 
-const count = ref<number>(0);
+defineProps<{ msg: string }>();
+
+const {count,setCount} = useAppStore();
+
 </script>
